@@ -9,7 +9,7 @@ import { CardService } from 'src/services/card.service';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent implements OnInit {
-  public gridType: FormControl = new FormControl('grid');
+  public gridType: FormControl = new FormControl('list');
   public isMobile: boolean = true;
 
   public get typeOfGrid(): string {

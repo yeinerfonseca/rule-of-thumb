@@ -370,6 +370,11 @@ main {
 
   .previous-rulings {
     font-weight: 300;
+    color: $color-dark-gray;
+
+    @include media(desktop-and-up) {
+      font-size: 2.5rem;
+    }
   }
 
   .main-content-wrapper {

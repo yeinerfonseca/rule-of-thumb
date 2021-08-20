@@ -27,7 +27,6 @@ export class CardService {
    */
   public updateCard(card: Card, voteSymbol: VoteSymbol): Promise<void> {
     return this._database.doc(`cards/${card.id}`).update({
-      lastUpdated: new Date().toISOString(),
       [`votes.${voteSymbol === '+' ? 'positive' : 'negative'}`]:
         firebase.firestore.FieldValue.increment(1),
     });

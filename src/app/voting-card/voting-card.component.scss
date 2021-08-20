@@ -34,10 +34,18 @@
     -webkit-box-orient: vertical;
     overflow: hidden;
     margin: 0;
+
+    @include media(desktop-and-up) {
+      font-size: 0.8rem;
+    }
   }
 
   &__timestamp {
     font-weight: 700;
+
+    @include media(desktop-and-up) {
+      font-size: 0.6rem;
+    }
   }
 
   &__category {
@@ -124,6 +132,10 @@
     &:disabled {
       background-color: $color-darker-background;
     }
+
+    @include media(desktop-and-up) {
+      font-size: 1rem;
+    }
   }
 
   &__positive-votes {
@@ -159,6 +171,14 @@
       transform: unset;
       display: flex;
       justify-content: space-between;
+    }
+
+    .card__description {
+      font-size: 1rem;
+    }
+
+    .card__timestamp {
+      font-size: 0.9rem;
     }
 
     .card__voting-section {
@@ -199,6 +219,10 @@
     .card__vote-now {
       padding: 0 25px;
       height: 45px;
+    }
+
+    .card__timestamp {
+      font-size: 0.8rem;
     }
   }
 }

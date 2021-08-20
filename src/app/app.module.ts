@@ -9,16 +9,22 @@ import { ScrollableDirective } from '../directives/scrollable.directive';
 import { AppComponent } from './app.component';
 import { CardService } from '../services/card.service';
 import { environment } from '../environments/environment';
+import { FormatDatePipe } from '../pipes/format-date.pipe';
 
 @NgModule({
-  declarations: [AppComponent, VotingCardComponent, ScrollableDirective],
+  declarations: [
+    AppComponent,
+    VotingCardComponent,
+    ScrollableDirective,
+    FormatDatePipe,
+  ],
   imports: [
     BrowserModule,
     ReactiveFormsModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFirestoreModule,
   ],
-  exports: [ScrollableDirective, AngularFirestoreModule],
+  exports: [ScrollableDirective, AngularFirestoreModule, FormatDatePipe],
   providers: [CardService],
   bootstrap: [AppComponent],
 })

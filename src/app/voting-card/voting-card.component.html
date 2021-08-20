@@ -38,7 +38,8 @@
         </ng-container>
 
         <ng-template #categoryBlock>
-          1 month ago in <span class="card__category">{{ card.category }}</span>
+          {{ card.lastUpdated | formatDate }} ago in
+          <span class="card__category">{{ card.category }}</span>
         </ng-template>
       </p>
       <div class="card__voting-btns">
