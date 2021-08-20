@@ -1,0 +1,44 @@
+@import "main.scss";
+
+html,
+body {
+  width: 100%;
+  margin: 0;
+  background-color: $color-white;
+  font-family: $main-font;
+  font-size: 12px;
+  font-weight: 400;
+
+  @include media(tablet-and-up) {
+    font-size: 14px;
+  }
+
+  @include media(desktop-and-up) {
+    font-size: 18px;
+  }
+}
+
+body {
+  position: relative;
+}
+
+a,
+a:visited {
+  color: $color-white;
+}
+
+button {
+  font-family: $main-font;
+}
+
+ul {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+hr[role="separator"] {
+  border: 0 none;
+  border-bottom: 2px dotted $color-dark-gray;
+  margin: 1.5rem 1rem;
+}

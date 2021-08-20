@@ -1,0 +1,89 @@
+<div
+  class="card"
+  [ngClass]="{ 'card--list': type === 'list' && !isMobile }"
+  [ngStyle]="{
+    'background-image': applyBackground(card.picture)
+  }"
+>
+  <div class="card__info">
+    <div class="card__main-info">
+      <div
+        class="card__most-voted"
+        *ngIf="card.votes.positive > 0 || card.votes.negative > 0"
+        [ngClass]="{
+          'card__most-voted--likes': card.votes.positive > card.votes.negative,
+          'card__most-voted--dislikes':
+            card.votes.positive < card.votes.negative
+        }"
+      >
+        <img
+          src="assets/img/thumbs-up.svg"
+          alt="thumbs up"
+          *ngIf="card.votes.positive > card.votes.negative; else isNegative"
+        />
+
+        <ng-template #isNegative>
+          <img src="assets/img/thumbs-down.svg" alt="thumbs down" />
+        </ng-template>
+      </div>
+      <h1 class="card__name">{{ card.name }}</h1>
+      <p class="card__description">
+        {{ card.description }}
+      </p>
+    </div>
+    <div class="card__voting-section">
+      <p class="card__timestamp">
+        <ng-container *ngIf="hasVoted; else categoryBlock">
+          Thank you for your vote!
+        </ng-container>
+
+        <ng-template #categoryBlock>
+          1 month ago in <span class="card__category">{{ card.category }}</span>
+        </ng-template>
+      </p>
+      <div class="card__voting-btns">
+        <ng-container *ngIf="!hasVoted">
+          <button
+            class="card__thumb-up-btn card__active-cursor"
+            [ngClass]="{ 'card--active-vote': selectedVote === '+' }"
+            (click)="selectedVote = '+'"
+          >
+            <img src="assets/img/thumbs-up.svg" alt="thumbs up" />
+          </button>
+          <button
+            class="card__thumb-down-btn card__active-cursor"
+            [ngClass]="{ 'card--active-vote': selectedVote === '-' }"
+            (click)="selectedVote = '-'"
+          >
+            <img src="assets/img/thumbs-down.svg" alt="thumbs down" />
+          </button>
+        </ng-container>
+        <button
+          class="card__vote-now"
+          [ngClass]="{ 'card__active-cursor': selectedVote }"
+          [disabled]="!selectedVote"
+          (click)="vote()"
+        >
+          {{ hasVoted ? "Vote Again" : "Vote Now" }}
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div class="card__voting-stats">
+    <div
+      class="card__votes-percentage card__positive-votes"
+      [ngStyle]="{ width: positivePercentage }"
+    >
+      <img src="assets/img/thumbs-up.svg" alt="thumbs up" />
+      <p>{{ positivePercentage }}</p>
+    </div>
+    <div
+      class="card__votes-percentage card__negative-votes"
+      [ngStyle]="{ width: negativePercentage }"
+    >
+      <p>{{ negativePercentage }}</p>
+      <img src="assets/img/thumbs-down.svg" alt="thumbs down" />
+    </div>
+  </div>
+</div>

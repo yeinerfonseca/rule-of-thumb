@@ -1,0 +1,23 @@
+@import "./variables";
+
+@mixin media($point) {
+  @if $point == mobile-and-up {
+    @include min-breakpoint($breakpoint-mobile) {
+      @content;
+    }
+  } @else if $point == tablet-and-up {
+    @include min-breakpoint($breakpoint-tablet) {
+      @content;
+    }
+  } @else if $point == desktop-and-up {
+    @include min-breakpoint($breakpoint-desktop) {
+      @content;
+    }
+  }
+}
+
+@mixin min-breakpoint($breakpoint) {
+  @media all and (min-width: $breakpoint) {
+    @content;
+  }
+}
